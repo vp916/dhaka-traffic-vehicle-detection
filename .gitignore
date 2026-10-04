@@ -1,0 +1,4 @@
+work/
+work_smoke/
+*.pt
+.ipynb_checkpoints/
