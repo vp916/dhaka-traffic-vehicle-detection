@@ -9,7 +9,7 @@ Dhaka's streets mix cars and buses with rickshaws, CNG auto-rickshaws, human hau
 Three controlled runs, all with identical data, split and hyper-parameters:
 
 1. YOLOv8-s baseline (COCO-pretrained),
-2. YOLO26-s (COCO-pretrained), the newest Ultralytics architecture (NMS-free, no DFL),
+2. YOLO26-s (COCO-pretrained), a 2025 Ultralytics architecture (NMS-free, no DFL),
 3. YOLO26-s with repeat-factor oversampling of images that contain rare classes.
 
 Main findings:
@@ -155,7 +155,7 @@ The published numbers (Saha et al. 2024, *Bangladeshi Native Vehicle Detection i
 - Under identical settings, YOLO26-s and YOLOv8-s are about equal overall. YOLO26-s is more precise (0.721 vs 0.704) and better on common classes, but weaker on rare classes. YOLO26's main changes (NMS-free end-to-end inference, no DFL, simpler export) help most with CPU and edge deployment, such as roadside cameras.
 - Showing rare-class images 2–3× more often makes the model predict those classes more readily. Recall goes up from 0.47 to 0.54, precision goes down from 0.72 to 0.65, and mAP improves overall.
 - Most errors are between look-alike classes: car, SUV and minivan; minivan and van; truck, pickup and bus; minibus predicted as bus. Small two-wheelers (scooter, bicycle) are often predicted as `motorbike` or missed, and 35.7% of all boxes are smaller than 32 px at 640 px input.
-- `scooter` (33 training boxes), `policecar` (27) and `garbagevan` (3) stay close to zero AP without more annotation.
+- `scooter` (33 training boxes, AP@50 0.02) and `policecar` (27, AP@50 0.22) remain weak, and `garbagevan` (3 boxes) cannot be evaluated. These classes need more annotation.
 
 ### Limitations
 
